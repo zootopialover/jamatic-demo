@@ -1,0 +1,41 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-1.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model cars {
+  id        Int      @id
+  name      String?
+  teamid    Int
+  top_spead String?
+  team      team     @relation(fields: [teamid], references: [id])
+  driver    driver[]
+}
+
+model driver {
+  carid               Int
+  country             String?
+  id                  Int     @id
+  name                String?
+  podiums             String?
+  teamid              Int
+  world_championships Int?
+  cars                cars    @relation(fields: [carid], references: [id])
+  team                team    @relation(fields: [teamid], references: [id])
+}
+
+model team {
+  base                String?
+  id                  Int      @id
+  name                String?
+  power_unit          String?
+  team_principal      String?
+  world_championships Int?
+  cars                cars[]
+  driver              driver[]
+}

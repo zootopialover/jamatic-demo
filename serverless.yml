@@ -1,0 +1,34 @@
+service: prisma-aws-serverless
+
+plugins:
+  - serverless-webpack
+  - serverless-offline
+
+custom:
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules: true
+    packagerOptions:
+      scripts: # this is the magic
+        - prisma generate
+
+  serverless-offline:
+    port: 3000
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: us-east-2
+
+functions:
+  graphql:
+    handler: src/graphql.graphqlHandler
+    events:
+      - http:
+          path: graphql
+          method: post
+          cors: true
+      - http:
+          path: graphql
+          method: get
+          cors: true

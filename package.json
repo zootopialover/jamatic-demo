@@ -1,0 +1,37 @@
+{
+  "name": "prisma-aws-serverless",
+  "version": "1.1.0",
+  "description": "A GraphQL Node.js starter for the Serverless Framework with async/await and unit test support",
+  "main": "handler.js",
+  "scripts": {
+    "prisma:generate": "prisma generate",
+    "offline": "sls offline",
+    "deploy": "sls deploy",
+    "prisma:introspect": "prisma introspect",
+    "test": "jest"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-source-map-support": "^1.0.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-3": "^6.24.1",
+    "copy-webpack-plugin": "^5.1.2",
+    "jest": "^21.2.1",
+    "serverless-offline": "6.9.0",
+    "serverless-webpack": "^5.1.0",
+    "webpack": "^4.16.2",
+    "webpack-node-externals": "^1.6.0"
+  },
+  "dependencies": {
+    "@prisma/client": "^2.20.1",
+    "apollo-server-lambda": "^2.22.2",
+    "babel-runtime": "^6.26.0",
+    "graphql": "^14.7.0",
+    "prisma": "^2.20.1",
+    "source-map-support": "^0.4.18"
+  }
+}
